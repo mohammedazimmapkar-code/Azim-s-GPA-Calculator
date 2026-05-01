@@ -15,6 +15,7 @@
             --border: #e5e7eb;
             --success: #10b981;
             --danger: #ef4444;
+            --warning: #f59e0b;
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -124,8 +125,9 @@
         .target-box p { margin: 5px 0; }
         .target-highlight { font-weight: bold; color: var(--text-main); }
         .target-list { margin: 10px 0 0 0; padding-left: 20px; color: var(--text-muted); }
-        .target-list li { margin-bottom: 4px; }
+        .target-list li { margin-bottom: 6px; }
         .impossible { text-decoration: line-through; opacity: 0.6; }
+        .rule-warning { color: var(--warning); font-weight: bold; }
         .footer {
             text-align: center;
             margin-top: 40px;
@@ -145,52 +147,22 @@
     <div class="card">
         <h2>Completed Subjects (Marks out of 100)</h2>
         <div class="grid">
-            <div class="input-group">
-                <label>OOPL <span class="credits-badge">(3 Cr)</span></label>
-                <input type="number" id="oopl" placeholder="0-100" min="0" max="100">
-            </div>
-            <div class="input-group">
-                <label>DBMSL <span class="credits-badge">(1 Cr)</span></label>
-                <input type="number" id="dbmsl" placeholder="0-100" min="0" max="100">
-            </div>
-            <div class="input-group">
-                <label>PBL <span class="credits-badge">(1 Cr)</span></label>
-                <input type="number" id="pbl" placeholder="0-100" min="0" max="100">
-            </div>
-            <div class="input-group">
-                <label>CS <span class="credits-badge">(1 Cr)</span></label>
-                <input type="number" id="cs" placeholder="0-100" min="0" max="100">
-            </div>
-            <div class="input-group">
-                <label>UE <span class="credits-badge">(3 Cr)</span></label>
-                <input type="number" id="ue" placeholder="0-100" min="0" max="100">
-            </div>
-            <div class="input-group">
-                <label>RUIP <span class="credits-badge">(2 Cr)</span></label>
-                <input type="number" id="ruip" placeholder="0-100" min="0" max="100">
-            </div>
-            <div class="input-group">
-                <label>IKS <span class="credits-badge">(2 Cr)</span></label>
-                <input type="number" id="iks" placeholder="0-100" min="0" max="100">
-            </div>
+            <div class="input-group"><label>OOPL <span class="credits-badge">(3 Cr)</span></label><input type="number" id="oopl" min="0" max="100"></div>
+            <div class="input-group"><label>DBMSL <span class="credits-badge">(1 Cr)</span></label><input type="number" id="dbmsl" min="0" max="100"></div>
+            <div class="input-group"><label>PBL <span class="credits-badge">(1 Cr)</span></label><input type="number" id="pbl" min="0" max="100"></div>
+            <div class="input-group"><label>CS <span class="credits-badge">(1 Cr)</span></label><input type="number" id="cs" min="0" max="100"></div>
+            <div class="input-group"><label>UE <span class="credits-badge">(3 Cr)</span></label><input type="number" id="ue" min="0" max="100"></div>
+            <div class="input-group"><label>RUIP <span class="credits-badge">(2 Cr)</span></label><input type="number" id="ruip" min="0" max="100"></div>
+            <div class="input-group"><label>IKS <span class="credits-badge">(2 Cr)</span></label><input type="number" id="iks" min="0" max="100"></div>
         </div>
     </div>
 
     <div class="card">
         <h2>Subjects with Finals (Current Marks out of 60)</h2>
         <div class="grid">
-            <div class="input-group">
-                <label>DBMS <span class="credits-badge">(3 Cr)</span></label>
-                <input type="number" id="dbms" placeholder="0-60" min="0" max="60">
-            </div>
-            <div class="input-group">
-                <label>DAA <span class="credits-badge">(3 Cr)</span></label>
-                <input type="number" id="daa" placeholder="0-60" min="0" max="60">
-            </div>
-            <div class="input-group">
-                <label>PS <span class="credits-badge">(4 Cr)</span></label>
-                <input type="number" id="ps" placeholder="0-60" min="0" max="60">
-            </div>
+            <div class="input-group"><label>DBMS <span class="credits-badge">(3 Cr)</span></label><input type="number" id="dbms" min="0" max="60"></div>
+            <div class="input-group"><label>DAA <span class="credits-badge">(3 Cr)</span></label><input type="number" id="daa" min="0" max="60"></div>
+            <div class="input-group"><label>PS <span class="credits-badge">(4 Cr)</span></label><input type="number" id="ps" min="0" max="60"></div>
         </div>
     </div>
 
@@ -246,44 +218,48 @@
         let totalCredits = 23;
         let bestCasePoints = 0;
 
-        // Process completed subjects
         completed.forEach(sub => {
             let val = parseFloat(document.getElementById(sub.id).value) || 0;
             bestCasePoints += getGradePoint(val) * sub.credits;
         });
 
-        // Process final subjects
         let targetsHTML = '';
         finals.forEach(sub => {
             let currentMarks = parseFloat(document.getElementById(sub.id).value) || 0;
             
-            // Best Case Logic for the big GPA number
+            // Best Case Logic
             let maxPossible = currentMarks + 40;
             let bestGP = getGradePoint(maxPossible);
+            
+            // Apply minimum 16 rule to best case: if they score 40, they pass the 16 rule. 
+            // But if current + 40 is < 40 total, they fail anyway.
+            if (maxPossible < 40) bestGP = 0; 
+            
             bestCasePoints += bestGP * sub.credits;
 
             targetsHTML += `<div class="target-box"><h3>${sub.name}</h3>`;
 
-            // Worst Case / Passing Logic
-            let passReq = 40 - currentMarks;
-            if (passReq > 40) {
-                 targetsHTML += `<p style="color: var(--danger); font-weight: bold;">⚠️ Passing (40 total) is mathematically impossible.</p>`;
-            } else if (passReq <= 0) {
-                 targetsHTML += `<p style="color: var(--success); font-weight: bold;">✅ You have already secured a passing grade!</p>`;
+            // Passing Logic (Must be at least 16)
+            let rawPassReq = 40 - currentMarks;
+            let actualPassReq = Math.max(16, rawPassReq);
+
+            if (actualPassReq > 40) {
+                 targetsHTML += `<p style="color: var(--danger); font-weight: bold;">⚠️ Passing is mathematically impossible.</p>`;
+            } else if (rawPassReq < 16) {
+                 targetsHTML += `<p><strong>To Pass:</strong> Need <span class="target-highlight">16 marks</span> <span class="rule-warning">(University Minimum Rule)</span>.</p>`;
             } else {
-                 targetsHTML += `<p><strong>To Pass (5 Pointer):</strong> Need <span class="target-highlight">${passReq} marks</span> in the final.</p>`;
+                 targetsHTML += `<p><strong>To Pass:</strong> Need <span class="target-highlight">${actualPassReq} marks</span> in the final.</p>`;
             }
 
             targetsHTML += `<hr style="border: 0; border-top: 1px solid var(--border); margin: 15px 0;">`;
             targetsHTML += `<p><strong>Higher Brackets Breakdown:</strong></p><ul class="target-list">`;
 
-            // Calculate for 10 down to 6 (since 5 is passing)
             for (let gp = 10; gp >= 6; gp--) {
                 let threshold = getThreshold(gp);
                 if (currentMarks + 40 >= threshold) {
                     let required = threshold - currentMarks;
-                    if (required <= 0) {
-                       targetsHTML += `<li>${gp} Pointer: <strong style="color: var(--success);">Already Achieved!</strong></li>`;
+                    if (required < 16) {
+                       targetsHTML += `<li>${gp} Pointer: Math says ${required <= 0 ? '0' : required}, but <span class="rule-warning">16 min required</span> to pass.</li>`;
                     } else {
                        targetsHTML += `<li>${gp} Pointer (${threshold}+ total): Need <strong>${required} marks</strong></li>`;
                     }
@@ -294,13 +270,11 @@
             targetsHTML += `</ul></div>`;
         });
 
-        // Calculate and display Best-Case GPA
         let gpa = bestCasePoints / totalCredits;
         document.getElementById('gpa-result').innerText = gpa.toFixed(2);
         document.getElementById('targets-container').innerHTML = targetsHTML;
         document.getElementById('results').style.display = 'block';
         
-        // Scroll to results
         document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
     }
 </script>
