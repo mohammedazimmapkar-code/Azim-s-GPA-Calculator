@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEM IV GPA Calculator</title>
+    <style>
+        :root {
+            --bg: #f3f4f6;
+            --card-bg: #ffffff;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --border: #e5e7eb;
+            --success: #10b981;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: var(--text-main);
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+        .privacy-note {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 1.25rem;
+            margin-top: 0;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+        }
+        .credits-badge {
+            font-weight: normal;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+        input {
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        button {
+            width: 100%;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin: 20px 0;
+        }
+        button:hover {
+            background-color: var(--primary-hover);
+        }
+        #results {
+            display: none;
+            background-color: #ecfdf5;
+            border: 1px solid #a7f3d0;
+        }
+        .gpa-display {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--success);
+            margin: 10px 0;
+        }
+        .target-box {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            border: 1px solid #d1d5db;
+        }
+        .target-box p { margin: 5px 0; }
+        .target-highlight { font-weight: bold; color: var(--primary); }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px 0;
+            color: var(--text-muted);
+            font-style: italic;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>SEM IV GPA Calculator</h1>
+    <p class="privacy-note">All calculations are done locally on your device. No data is saved.</p>
+
+    <div class="card">
+        <h2>Completed Subjects (Marks out of 100)</h2>
+        <div class="grid">
+            <div class="input-group">
+                <label>OOPL <span class="credits-badge">(3 Cr)</span></label>
+                <input type="number" id="oopl" placeholder="0-100" min="0" max="100">
+            </div>
+            <div class="input-group">
+                <label>DBMSL <span class="credits-badge">(1 Cr)</span></label>
+                <input type="number" id="dbmsl" placeholder="0-100" min="0" max="100">
+            </div>
+            <div class="input-group">
+                <label>PBL <span class="credits-badge">(1 Cr)</span></label>
+                <input type="number" id="pbl" placeholder="0-100" min="0" max="100">
+            </div>
+            <div class="input-group">
+                <label>CS <span class="credits-badge">(1 Cr)</span></label>
+                <input type="number" id="cs" placeholder="0-100" min="0" max="100">
+            </div>
+            <div class="input-group">
+                <label>UE <span class="credits-badge">(3 Cr)</span></label>
+                <input type="number" id="ue" placeholder="0-100" min="0" max="100">
+            </div>
+            <div class="input-group">
+                <label>RUIP <span class="credits-badge">(2 Cr)</span></label>
+                <input type="number" id="ruip" placeholder="0-100" min="0" max="100">
+            </div>
+            <div class="input-group">
+                <label>IKS <span class="credits-badge">(2 Cr)</span></label>
+                <input type="number" id="iks" placeholder="0-100" min="0" max="100">
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Subjects with Finals (Current Marks out of 60)</h2>
+        <div class="grid">
+            <div class="input-group">
+                <label>DBMS <span class="credits-badge">(3 Cr)</span></label>
+                <input type="number" id="dbms" placeholder="0-60" min="0" max="60">
+            </div>
+            <div class="input-group">
+                <label>DAA <span class="credits-badge">(3 Cr)</span></label>
+                <input type="number" id="daa" placeholder="0-60" min="0" max="60">
+            </div>
+            <div class="input-group">
+                <label>PS <span class="credits-badge">(4 Cr)</span></label>
+                <input type="number" id="ps" placeholder="0-60" min="0" max="60">
+            </div>
+        </div>
+    </div>
+
+    <button onclick="calculate()">Calculate Best-Case Scenario</button>
+
+    <div id="results" class="card">
+        <h2>Your Best-Case Scenario</h2>
+        <div class="gpa-display" id="gpa-result">0.00</div>
+        <p style="text-align:center; color: var(--text-muted); margin-top: -10px; margin-bottom: 20px;">Projected GPA</p>
+        
+        <h3>Targets for Final Exams (out of 40)</h3>
+        <div id="targets-container"></div>
+    </div>
+
+    <footer class="footer">
+        with love from Mohammed Azim Mapkar, CR Panel-I
+    </footer>
+</div>
+
+<script>
+    // Grading logic: >=90(10), >=80(9), >=70(8), >=60(7), >=50(6), >=40(5)
+    function getGradePoint(marks) {
+        if(marks >= 90) return 10;
+        if(marks >= 80) return 9;
+        if(marks >= 70) return 8;
+        if(marks >= 60) return 7;
+        if(marks >= 50) return 6;
+        if(marks >= 40) return 5;
+        return 0;
+    }
+
+    function getThreshold(gp) {
+        if(gp === 10) return 90;
+        if(gp === 9) return 80;
+        if(gp === 8) return 70;
+        if(gp === 7) return 60;
+        if(gp === 6) return 50;
+        if(gp === 5) return 40;
+        return 0;
+    }
+
+    function calculate() {
+        // Credits
+        const completed = [
+            { id: 'oopl', credits: 3 }, { id: 'dbmsl', credits: 1 },
+            { id: 'pbl', credits: 1 }, { id: 'cs', credits: 1 },
+            { id: 'ue', credits: 3 }, { id: 'ruip', credits: 2 }, { id: 'iks', credits: 2 }
+        ];
+        const finals = [
+            { id: 'dbms', credits: 3, name: 'DBMS' },
+            { id: 'daa', credits: 3, name: 'DAA' },
+            { id: 'ps', credits: 4, name: 'PS' }
+        ];
+
+        let totalCredits = 23;
+        let totalPoints = 0;
+
+        // Process completed subjects
+        completed.forEach(sub => {
+            let val = parseFloat(document.getElementById(sub.id).value) || 0;
+            totalPoints += getGradePoint(val) * sub.credits;
+        });
+
+        // Process final subjects
+        let targetsHTML = '';
+        finals.forEach(sub => {
+            let currentMarks = parseFloat(document.getElementById(sub.id).value) || 0;
+            let maxPossible = currentMarks + 40;
+            let bestGP = getGradePoint(maxPossible);
+            
+            totalPoints += bestGP * sub.credits;
+
+            let required = getThreshold(bestGP) - currentMarks;
+            if (required < 0) required = 0;
+
+            targetsHTML += `
+                <div class="target-box">
+                    <strong>${sub.name}</strong> 
+                    <p>To hit a <span class="target-highlight">${bestGP} Pointer</span>, you need minimum <span class="target-highlight">${required} marks</span> in the final exam.</p>
+                </div>
+            `;
+        });
+
+        // Calculate and display GPA
+        let gpa = totalPoints / totalCredits;
+        document.getElementById('gpa-result').innerText = gpa.toFixed(2);
+        document.getElementById('targets-container').innerHTML = targetsHTML;
+        document.getElementById('results').style.display = 'block';
+        
+        // Scroll to results
+        document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+</body>
+</html>
