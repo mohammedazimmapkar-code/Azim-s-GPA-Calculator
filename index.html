@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -48,142 +48,60 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
         }
-        h2 {
-            font-size: 1.25rem;
-            margin-top: 0;
-            border-bottom: 2px solid var(--border);
-            padding-bottom: 10px;
-        }
+        h2 { font-size: 1.25rem; margin-top: 0; border-bottom: 2px solid var(--border); padding-bottom: 10px; }
         
-        /* Branch Selection Styles */
-        #branch-selection {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 30px;
-        }
+        #branch-selection { display: flex; flex-direction: column; gap: 15px; margin-top: 30px; }
         .branch-btn {
-            background-color: white;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-            padding: 20px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.2s;
+            background-color: white; color: var(--primary); border: 2px solid var(--primary);
+            padding: 20px; font-size: 1.2rem; font-weight: bold; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s;
         }
-        .branch-btn:hover {
-            background-color: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-        }
+        .branch-btn:hover { background-color: var(--primary); color: white; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); }
 
-        /* Calculator Styles */
-        #calculator-section {
-            display: none;
-        }
-        .back-btn {
-            background: none;
-            color: var(--text-muted);
-            border: none;
-            padding: 0;
-            font-size: 1rem;
-            cursor: pointer;
-            margin-bottom: 20px;
-            display: inline-flex;
-            align-items: center;
-            transition: color 0.2s;
-        }
+        #calculator-section { display: none; }
+        .back-btn { background: none; color: var(--text-muted); border: none; padding: 0; font-size: 1rem; cursor: pointer; margin-bottom: 20px; transition: color 0.2s; }
         .back-btn:hover { color: var(--primary); }
-        .course-title {
-            color: var(--primary);
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 16px;
-        }
-        .input-group {
-            display: flex;
-            flex-direction: column;
-        }
-        label {
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 6px;
-        }
-        .credits-badge {
-            font-weight: normal;
-            color: var(--text-muted);
-            font-size: 0.8rem;
-        }
-        input {
-            padding: 10px;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            font-size: 1rem;
-            transition: border-color 0.2s;
-        }
-        input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-        .calc-btn {
-            width: 100%;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 14px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            margin: 20px 0;
-        }
+        .course-title { color: var(--primary); margin-bottom: 20px; font-size: 1.5rem; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+        .input-group { display: flex; flex-direction: column; }
+        label { font-weight: 600; font-size: 0.9rem; margin-bottom: 6px; }
+        .credits-badge { font-weight: normal; color: var(--text-muted); font-size: 0.8rem; }
+        input { padding: 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 1rem; transition: border-color 0.2s; }
+        input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); }
+        
+        .calc-btn { width: 100%; background-color: var(--primary); color: white; border: none; padding: 14px; font-size: 1.1rem; font-weight: 600; border-radius: 8px; cursor: pointer; margin: 20px 0; }
         .calc-btn:hover { background-color: var(--primary-hover); }
         
-        /* Results Styles */
-        #results {
-            display: none;
-            background-color: #f8fafc;
-            border: 1px solid #cbd5e1;
-        }
-        .gpa-display {
-            text-align: center;
-            font-size: 3rem;
-            font-weight: bold;
-            color: var(--primary);
-            margin: 10px 0;
-        }
-        .target-box {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 15px;
-            border: 1px solid var(--border);
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-        }
-        .target-box h3 { margin: 0 0 10px 0; font-size: 1.2rem; color: var(--primary); }
-        .target-box p { margin: 5px 0; }
+        #results { display: none; background-color: #f8fafc; border: 1px solid #cbd5e1; }
+        .gpa-display { text-align: center; font-size: 3rem; font-weight: bold; color: var(--primary); margin: 10px 0; }
+        
+        .target-box { background: white; padding: 15px; border-radius: 8px; margin-top: 10px; border: 1px solid var(--border); }
+        .target-box h3 { margin: 0 0 5px 0; font-size: 1.1rem; color: var(--primary); }
         .target-highlight { font-weight: bold; color: var(--text-main); }
-        .target-list { margin: 10px 0 0 0; padding-left: 20px; color: var(--text-muted); }
-        .target-list li { margin-bottom: 6px; }
-        .impossible { text-decoration: line-through; opacity: 0.6; }
+        
+        /* Advanced Analysis Accordion */
+        details { background: white; padding: 15px; border-radius: 8px; border: 1px solid var(--border); margin-top: 15px; }
+        summary { font-weight: bold; color: var(--text-muted); cursor: pointer; font-size: 1.1rem; outline: none; }
+        summary:hover { color: var(--primary); }
+        .adv-list { margin: 10px 0 0 0; padding-left: 20px; color: var(--text-muted); font-size: 0.95rem; }
+        .adv-list li { margin-bottom: 6px; }
+        .impossible { text-decoration: line-through; opacity: 0.5; }
         .rule-warning { color: var(--warning); font-weight: bold; }
-        .footer {
-            text-align: center;
-            margin-top: 40px;
-            padding: 20px 0;
-            color: var(--text-muted);
-            font-style: italic;
-            font-size: 1rem;
+
+        /* Simulator Styles */
+        .simulator-section { margin-top: 30px; padding-top: 20px; border-top: 2px dashed var(--border); }
+        .sim-row { margin-bottom: 15px; display: flex; flex-direction: column; gap: 5px; }
+        .sim-title { font-weight: bold; color: var(--text-main); }
+        .sim-buttons { display: flex; flex-wrap: wrap; gap: 8px; }
+        .sim-btn { 
+            padding: 8px 12px; border: 1px solid var(--border); border-radius: 6px; background: white; 
+            cursor: pointer; font-weight: bold; color: var(--text-muted); transition: all 0.2s;
         }
+        .sim-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .sim-btn.disabled { opacity: 0.3; cursor: not-allowed; background: #e5e7eb; }
+
+        .footer { text-align: center; margin-top: 40px; padding: 20px 0; color: var(--text-muted); font-style: italic; font-size: 1rem; line-height: 1.6; }
     </style>
 </head>
 <body>
@@ -192,6 +110,7 @@
     <h1>SEM IV GPA Calculator</h1>
     <p class="privacy-note">All calculations are done locally on your device. No data is saved.</p>
 
+    <!-- STEP 1: Branch Selection -->
     <div id="branch-selection" class="card">
         <h2 style="text-align: center; border: none; margin-bottom: 20px;">Select Your Branch</h2>
         <button class="branch-btn" onclick="selectBranch('CORE')">Computer Engineering (CORE)</button>
@@ -199,118 +118,79 @@
         <button class="branch-btn" onclick="selectBranch('AIDS')">AI & Data Science (AIDS)</button>
     </div>
 
+    <!-- STEP 2: Calculator Form -->
     <div id="calculator-section">
         <button class="back-btn" onclick="goBack()">← Change Branch</button>
         <h2 class="course-title" id="course-title">Branch Name</h2>
 
         <div class="card">
             <h2>Completed Subjects (Marks out of 100)</h2>
-            <div class="grid" id="completed-grid">
-                </div>
+            <div class="grid" id="completed-grid"></div>
         </div>
 
         <div class="card">
             <h2>Subjects with Finals (Current Marks out of 60)</h2>
-            <div class="grid" id="finals-grid">
-                </div>
+            <div class="grid" id="finals-grid"></div>
         </div>
 
         <button class="calc-btn" onclick="calculate()">Calculate Strategy</button>
 
         <div id="results" class="card">
-            <h2>Your Strategy Dashboard</h2>
+            <h2>Best-Case Overview</h2>
             <div class="gpa-display" id="gpa-result">0.00</div>
-            <p style="text-align:center; color: var(--text-muted); margin-top: -10px; margin-bottom: 20px;">Absolute Best-Case GPA (If you score 40/40 in finals)</p>
+            <p style="text-align:center; color: var(--text-muted); margin-top: -10px; margin-bottom: 20px;">Absolute Best-Case GPA (If you score 40/40)</p>
             
-            <h2 style="margin-top: 30px;">Final Exam Targets (out of 40)</h2>
-            <div id="targets-container"></div>
+            <div id="best-targets-container"></div>
+            
+            <details id="advanced-analysis">
+                <summary>View Advanced Analysis (Passing Rules & Lower Brackets)</summary>
+                <div id="adv-targets-container" style="margin-top: 15px;"></div>
+            </details>
+
+            <div class="simulator-section">
+                <h2>Interactive "What-If" Simulator</h2>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">Select realistic target grade points for your finals to see how it affects your GPA.</p>
+                <div class="gpa-display" id="sim-gpa-result" style="color: var(--success); font-size: 2.5rem;">0.00</div>
+                <p style="text-align:center; color: var(--text-muted); margin-top: -10px; margin-bottom: 20px;">Projected Realistic GPA</p>
+                
+                <div id="simulator-controls"></div>
+            </div>
         </div>
     </div>
 
     <footer class="footer">
-        with love from Mohammed Azim Mapkar, CR Panel-I
+        with ❤️ from Mohammed Azim Mapkar<br>
+        CR Panel-I<br>
+        SY CSE (Core)
     </footer>
 </div>
 
 <script>
-    // --- Data Dictionary for All Branches ---
     const courseData = {
-        'CORE': {
-            name: 'Computer Engineering (CORE)',
-            totalCredits: 23,
-            completed: [
-                { id: 'c_oopl', name: 'OOPL', credits: 3 },
-                { id: 'c_dbmsl', name: 'DBMSL', credits: 1 },
-                { id: 'c_pbl', name: 'PBL', credits: 1 },
-                { id: 'c_cs', name: 'CS', credits: 1 },
-                { id: 'c_ue', name: 'UE', credits: 3 },
-                { id: 'c_ruip', name: 'RUIP', credits: 2 },
-                { id: 'c_iks', name: 'IKS', credits: 2 }
-            ],
-            finals: [
-                { id: 'c_dbms', name: 'DBMS', credits: 3 },
-                { id: 'c_daa', name: 'DAA', credits: 3 },
-                { id: 'c_ps', name: 'PS', credits: 4 }
-            ]
+        'CORE': { name: 'Computer Engineering (CORE)', totalCredits: 23,
+            completed: [{id:'c_oopl',name:'OOPL',credits:3}, {id:'c_dbmsl',name:'DBMSL',credits:1}, {id:'c_pbl',name:'PBL',credits:1}, {id:'c_cs',name:'CS',credits:1}, {id:'c_ue',name:'UE',credits:3}, {id:'c_ruip',name:'RUIP',credits:2}, {id:'c_iks',name:'IKS',credits:2}],
+            finals: [{id:'c_dbms',name:'DBMS',credits:3}, {id:'c_daa',name:'DAA',credits:3}, {id:'c_ps',name:'PS',credits:4}]
         },
-        'CSF': {
-            name: 'Cybersecurity & Forensics (CSF)',
-            totalCredits: 22,
-            completed: [
-                { id: 'csf_dbmsl', name: 'DBMS Lab', credits: 1 },
-                { id: 'csf_osl', name: 'OS Lab', credits: 1 },
-                { id: 'csf_esiot', name: 'ES & IoT Lab', credits: 1 },
-                { id: 'csf_pbl2', name: 'PBL-II', credits: 1 },
-                { id: 'csf_cog', name: 'Cognitive Skills', credits: 1 },
-                { id: 'csf_ruip', name: 'Rural Immersion', credits: 2 },
-                { id: 'csf_iks', name: 'IKS', credits: 2 },
-                { id: 'csf_ue3', name: 'UE-III', credits: 3 }
-            ],
-            finals: [
-                { id: 'csf_prob', name: 'Prob & Stats', credits: 4 },
-                { id: 'csf_dbms', name: 'DBMS', credits: 3 },
-                { id: 'csf_os', name: 'Operating System', credits: 3 }
-            ]
+        'CSF': { name: 'Cybersecurity & Forensics (CSF)', totalCredits: 22,
+            completed: [{id:'csf_dbmsl',name:'DBMS Lab',credits:1}, {id:'csf_osl',name:'OS Lab',credits:1}, {id:'csf_esiot',name:'ES & IoT Lab',credits:1}, {id:'csf_pbl2',name:'PBL-II',credits:1}, {id:'csf_cog',name:'Cognitive Skills',credits:1}, {id:'csf_ruip',name:'Rural Immersion',credits:2}, {id:'csf_iks',name:'IKS',credits:2}, {id:'csf_ue3',name:'UE-III',credits:3}],
+            finals: [{id:'csf_prob',name:'Prob & Stats',credits:4}, {id:'csf_dbms',name:'DBMS',credits:3}, {id:'csf_os',name:'Operating System',credits:3}]
         },
-        'AIDS': {
-            name: 'AI & Data Science (AIDS)',
-            totalCredits: 22,
-            completed: [
-                { id: 'ai_detl', name: 'DET Lab', credits: 1 },
-                { id: 'ai_aiesl', name: 'AI & ES Lab', credits: 1 },
-                { id: 'ai_pbl2', name: 'PBL-II', credits: 1 },
-                { id: 'ai_ue3', name: 'UE-III', credits: 3 },
-                { id: 'ai_cog', name: 'Cognitive Skills', credits: 1 },
-                { id: 'ai_ruip', name: 'Rural Immersion', credits: 1 },
-                { id: 'ai_lts', name: 'Life Transform. Skills', credits: 1 },
-                { id: 'ai_iks', name: 'IKS', credits: 2 }
-            ],
-            finals: [
-                { id: 'ai_prob', name: 'Prob & Stats', credits: 4 },
-                { id: 'ai_det', name: 'Data Eng. Tech.', credits: 2 },
-                { id: 'ai_aies', name: 'AI & Expert Sys.', credits: 2 },
-                { id: 'ai_daa', name: 'DAA', credits: 3 }
-            ]
+        'AIDS': { name: 'AI & Data Science (AIDS)', totalCredits: 22,
+            completed: [{id:'ai_detl',name:'DET Lab',credits:1}, {id:'ai_aiesl',name:'AI & ES Lab',credits:1}, {id:'ai_pbl2',name:'PBL-II',credits:1}, {id:'ai_ue3',name:'UE-III',credits:3}, {id:'ai_cog',name:'Cognitive Skills',credits:1}, {id:'ai_ruip',name:'Rural Immersion',credits:1}, {id:'ai_lts',name:'Life Transform. Skills',credits:1}, {id:'ai_iks',name:'IKS',credits:2}],
+            finals: [{id:'ai_prob',name:'Prob & Stats',credits:4}, {id:'ai_det',name:'Data Eng. Tech.',credits:2}, {id:'ai_aies',name:'AI & Expert Sys.',credits:2}, {id:'ai_daa',name:'DAA',credits:3}]
         }
     };
 
     let currentBranch = null;
+    let baseCompletedPoints = 0;
+    let simSelections = {}; // Stores { subjectId: selectedGradePoint }
 
-    // --- UI Navigation Functions ---
     function selectBranch(branchKey) {
         currentBranch = courseData[branchKey];
-        
-        // Update Title
         document.getElementById('course-title').innerText = currentBranch.name;
-        
-        // Generate Inputs dynamically
         generateInputs('completed-grid', currentBranch.completed, 100);
         generateInputs('finals-grid', currentBranch.finals, 60);
-
-        // Hide results if previously open
         document.getElementById('results').style.display = 'none';
-
-        // Swap Views
         document.getElementById('branch-selection').style.display = 'none';
         document.getElementById('calculator-section').style.display = 'block';
     }
@@ -325,105 +205,122 @@
         const container = document.getElementById(containerId);
         let html = '';
         subjects.forEach(sub => {
-            html += `
-                <div class="input-group">
-                    <label>${sub.name} <span class="credits-badge">(${sub.credits} Cr)</span></label>
-                    <input type="number" id="${sub.id}" placeholder="0-${maxMarks}" min="0" max="${maxMarks}">
-                </div>
-            `;
+            html += `<div class="input-group"><label>${sub.name} <span class="credits-badge">(${sub.credits} Cr)</span></label>
+                     <input type="number" id="${sub.id}" min="0" max="${maxMarks}"></div>`;
         });
         container.innerHTML = html;
     }
 
-    // --- Math & Calculation Functions ---
     function getGradePoint(marks) {
-        if(marks >= 90) return 10;
-        if(marks >= 80) return 9;
-        if(marks >= 70) return 8;
-        if(marks >= 60) return 7;
-        if(marks >= 50) return 6;
-        if(marks >= 40) return 5;
-        return 0;
+        if(marks >= 90) return 10; if(marks >= 80) return 9; if(marks >= 70) return 8;
+        if(marks >= 60) return 7; if(marks >= 50) return 6; if(marks >= 40) return 5; return 0;
     }
 
     function getThreshold(gp) {
-        if(gp === 10) return 90;
-        if(gp === 9) return 80;
-        if(gp === 8) return 70;
-        if(gp === 7) return 60;
-        if(gp === 6) return 50;
-        if(gp === 5) return 40;
-        return 0;
+        if(gp === 10) return 90; if(gp === 9) return 80; if(gp === 8) return 70;
+        if(gp === 7) return 60; if(gp === 6) return 50; if(gp === 5) return 40; return 0;
     }
 
     function calculate() {
         if (!currentBranch) return;
 
-        let bestCasePoints = 0;
+        baseCompletedPoints = 0;
+        let bestCaseTotalPoints = 0;
 
-        // 1. Process Completed Subjects
         currentBranch.completed.forEach(sub => {
             let val = parseFloat(document.getElementById(sub.id).value) || 0;
-            bestCasePoints += getGradePoint(val) * sub.credits;
+            let pts = getGradePoint(val) * sub.credits;
+            baseCompletedPoints += pts;
+            bestCaseTotalPoints += pts;
         });
 
-        // 2. Process Finals
-        let targetsHTML = '';
+        let bestHTML = '';
+        let advHTML = '';
+        let simHTML = '';
+        simSelections = {};
+
         currentBranch.finals.forEach(sub => {
             let currentMarks = parseFloat(document.getElementById(sub.id).value) || 0;
-            
-            // Best Case Logic
             let maxPossible = currentMarks + 40;
-            let bestGP = getGradePoint(maxPossible);
+            let bestGP = maxPossible < 40 ? 0 : getGradePoint(maxPossible);
             
-            // Apply minimum 16 rule to best case
-            if (maxPossible < 40) bestGP = 0; 
-            bestCasePoints += bestGP * sub.credits;
+            bestCaseTotalPoints += bestGP * sub.credits;
 
-            targetsHTML += `<div class="target-box"><h3>${sub.name}</h3>`;
+            // --- 1. Best Case Simple Box ---
+            let requiredForBest = Math.max(16, getThreshold(bestGP) - currentMarks);
+            bestHTML += `<div class="target-box">
+                <h3>${sub.name}</h3>
+                <p>Target: <span class="target-highlight">${bestGP} Pointer</span> (Need min ${requiredForBest} marks)</p>
+            </div>`;
 
-            // Passing Logic (Must be at least 16)
+            // --- 2. Advanced Analysis Box ---
+            advHTML += `<div class="target-box" style="background:#f9fafb; box-shadow:none;"><h3>${sub.name}</h3>`;
             let rawPassReq = 40 - currentMarks;
             let actualPassReq = Math.max(16, rawPassReq);
+            
+            if (actualPassReq > 40) advHTML += `<p style="color: var(--danger);">⚠️ Passing mathematically impossible.</p>`;
+            else if (rawPassReq < 16) advHTML += `<p><strong>To Pass (5 GP):</strong> Need <span class="target-highlight">16 marks</span> <span class="rule-warning">(Min Rule)</span>.</p>`;
+            else advHTML += `<p><strong>To Pass (5 GP):</strong> Need <span class="target-highlight">${actualPassReq} marks</span>.</p>`;
 
-            if (actualPassReq > 40) {
-                 targetsHTML += `<p style="color: var(--danger); font-weight: bold;">⚠️ Passing is mathematically impossible.</p>`;
-            } else if (rawPassReq < 16) {
-                 targetsHTML += `<p><strong>To Pass:</strong> Need <span class="target-highlight">16 marks</span> <span class="rule-warning">(University Minimum Rule)</span>.</p>`;
-            } else {
-                 targetsHTML += `<p><strong>To Pass:</strong> Need <span class="target-highlight">${actualPassReq} marks</span> in the final.</p>`;
-            }
-
-            targetsHTML += `<hr style="border: 0; border-top: 1px solid var(--border); margin: 15px 0;">`;
-            targetsHTML += `<p><strong>Higher Brackets Breakdown:</strong></p><ul class="target-list">`;
-
-            // Higher bracket calculation
+            advHTML += `<ul class="adv-list">`;
             for (let gp = 10; gp >= 6; gp--) {
                 let threshold = getThreshold(gp);
                 if (currentMarks + 40 >= threshold) {
                     let required = threshold - currentMarks;
-                    if (required < 16) {
-                       targetsHTML += `<li>${gp} Pointer: Math says ${required <= 0 ? '0' : required}, but <span class="rule-warning">16 min required</span> to pass.</li>`;
-                    } else {
-                       targetsHTML += `<li>${gp} Pointer (${threshold}+ total): Need <strong>${required} marks</strong></li>`;
-                    }
+                    if (required < 16) advHTML += `<li>${gp} Pointer: Math says ${required<=0?0:required}, but <span class="rule-warning">16 min required</span> to pass.</li>`;
+                    else advHTML += `<li>${gp} Pointer (${threshold}+ total): Need <strong>${required} marks</strong></li>`;
                 } else {
-                    targetsHTML += `<li class="impossible">${gp} Pointer: Mathematically Impossible</li>`;
+                    advHTML += `<li class="impossible">${gp} Pointer: Impossible</li>`;
                 }
             }
-            targetsHTML += `</ul></div>`;
+            advHTML += `</ul></div>`;
+
+            // --- 3. Simulator Controls ---
+            simSelections[sub.id] = bestGP; // Default to best case
+            simHTML += `<div class="sim-row">
+                <span class="sim-title">${sub.name} <span style="font-weight:normal; color:var(--text-muted)">(${sub.credits} Cr)</span></span>
+                <div class="sim-buttons">`;
+            
+            [10, 9, 8, 7, 6, 5, 0].forEach(gp => {
+                let isDisabled = gp > bestGP ? 'disabled' : '';
+                let isActive = gp === bestGP ? 'active' : '';
+                simHTML += `<button class="sim-btn ${isDisabled} ${isActive}" 
+                            ${isDisabled ? 'disabled' : `onclick="updateSim('${sub.id}', ${gp}, this)"`}>
+                            ${gp} GP</button>`;
+            });
+            simHTML += `</div></div>`;
         });
 
-        // 3. Display Results
-        let gpa = bestCasePoints / currentBranch.totalCredits;
-        document.getElementById('gpa-result').innerText = gpa.toFixed(2);
-        document.getElementById('targets-container').innerHTML = targetsHTML;
+        // Output to DOM
+        document.getElementById('gpa-result').innerText = (bestCaseTotalPoints / currentBranch.totalCredits).toFixed(2);
+        document.getElementById('best-targets-container').innerHTML = bestHTML;
+        document.getElementById('adv-targets-container').innerHTML = advHTML;
+        document.getElementById('simulator-controls').innerHTML = simHTML;
         document.getElementById('results').style.display = 'block';
         
+        updateSimProjectedGPA(); // Calc initial simulator GPA
         document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function updateSim(subjectId, selectedGp, btnElement) {
+        simSelections[subjectId] = selectedGp;
+        
+        // UI styling for active button
+        let parent = btnElement.parentElement;
+        let buttons = parent.getElementsByClassName('sim-btn');
+        for(let btn of buttons) { btn.classList.remove('active'); }
+        btnElement.classList.add('active');
+
+        updateSimProjectedGPA();
+    }
+
+    function updateSimProjectedGPA() {
+        let simTotalPoints = baseCompletedPoints;
+        currentBranch.finals.forEach(sub => {
+            simTotalPoints += (simSelections[sub.id] * sub.credits);
+        });
+        document.getElementById('sim-gpa-result').innerText = (simTotalPoints / currentBranch.totalCredits).toFixed(2);
     }
 </script>
 </body>
 </html>
-
-    
